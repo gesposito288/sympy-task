@@ -28,8 +28,26 @@ def main():
 
     pass
 
-def calcola_integrale_definito(espressione: str, variabile: str, estremo_inf: float, estremo_sup: float) -> sympy.Expr:
+
+def calcola_integrale_definito(espressione: str, variabile: str, estremo_inf: float, estremo_sup: float
+) -> sympy.Expr:
     """Sub-task 2: Calcolare un Integrale Definito."""
+
+    # Converte la variabile in simbolo SymPy
+    var = sympy.Symbol(variabile)
+
+    # Converte la stringa in espressione matematica SymPy
+    expr = sympy.sympify(espressione)
+
+    # Calcola l'integrale definito
+    integrale = sympy.integrate(expr, (var, estremo_inf, estremo_sup))
+
+    return integrale
+
+def main():
+    # Esempio di utilizzo
+    print("Integrale:", calcola_integrale_definito("x", "x", 0.0, 1.0))
+
     pass
 
 def calcola_limite(espressione: str, variabile: str, punto: str) -> sympy.Expr:
@@ -46,7 +64,7 @@ def risolvi_sistema_lineare(eq1: str, eq2: str, var1: str, var2: str) -> Dict[sy
 
 def main():
     print("Sub-task 1:", calcola_derivata("x**3", "x"))
-    print("Sub-task 2:", calcola_integrale_definito("x**2", "x", 0, 3))
+    print("Sub-task 2:", calcola_integrale_definito("x", "x", 0.0, 1.0))
     print("Sub-task 3:", calcola_limite("sin(x)/x", "x", "0"))
     print("Sub-task 4:", calcola_polinomio_taylor("exp(x)", "x", 0.0, 4))
     print("Sub-task 5:", risolvi_sistema_lineare("x + y - 3", "x - y - 1", "x", "y"))
