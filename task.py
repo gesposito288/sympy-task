@@ -5,6 +5,27 @@ from typing import Dict
 
 def calcola_derivata(espressione: str, variabile: str) -> sympy.Expr:
     """Sub-task 1: Calcolare una Derivata."""
+
+    # Converte la variabile in simbolo SymPy
+    var = sympy.Symbol(variabile)
+
+    # Converte la stringa in espressione matematica SymPy
+    expr = sympy.sympify(espressione)
+
+    # Calcola e restituisce la derivata
+    derivata = sympy.diff(expr, var)
+
+    return derivata
+
+def main():
+    # Esempio di utilizzo
+    espressione = "x**3"
+    variabile = "x"
+
+    risultato = calcola_derivata(espressione, variabile)
+
+    print("Derivata:", risultato)
+
     pass
 
 def calcola_integrale_definito(espressione: str, variabile: str, estremo_inf: float, estremo_sup: float) -> sympy.Expr:
@@ -24,7 +45,7 @@ def risolvi_sistema_lineare(eq1: str, eq2: str, var1: str, var2: str) -> Dict[sy
     pass
 
 def main():
-    print("Sub-task 1:", calcola_derivata("x**3 + 2*x", "x"))
+    print("Sub-task 1:", calcola_derivata("x**3", "x"))
     print("Sub-task 2:", calcola_integrale_definito("x**2", "x", 0, 3))
     print("Sub-task 3:", calcola_limite("sin(x)/x", "x", "0"))
     print("Sub-task 4:", calcola_polinomio_taylor("exp(x)", "x", 0.0, 4))
