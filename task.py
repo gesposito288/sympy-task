@@ -100,10 +100,35 @@ def main():
 
     pass
 
-def risolvi_sistema_lineare(eq1: str, eq2: str, var1: str, var2: str) -> Dict[sympy.Symbol, sympy.Expr]:
-    """Sub-task 5: Risolvere un Sistema Lineare."""
-    pass
 
+def risolvi_sistema_lineare(eq1: str, eq2: str, var1: str, var2: str
+) -> Dict[sympy.Symbol, sympy.Expr]:
+    """Sub-task 5: Risolvere un Sistema Lineare."""
+
+    # Converte le variabili in simboli SymPy
+    x = sympy.Symbol(var1)
+    y = sympy.Symbol(var2)
+
+    # Converte le equazioni in espressioni SymPy
+    e1 = sympy.sympify(eq1)
+    e2 = sympy.sympify(eq2)
+
+    # Risolve il sistema e restituisce la soluzione
+    return sympy.solve((e1, e2), (x, y), dict=True)[0]
+
+
+def main():
+    print(
+        "Soluzioni sistema:",
+        risolvi_sistema_lineare(
+            "x + y - 3",
+            "x - y - 1",
+            "x",
+            "y"
+        )
+    )
+
+    pass
 def main():
     print("Sub-task 1:", calcola_derivata("x**3", "x"))
     print("Sub-task 2:", calcola_integrale_definito("x", "x", 0.0, 1.0))
