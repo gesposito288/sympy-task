@@ -74,8 +74,30 @@ def main():
     print("Limite:", calcola_limite("sin(x)/x", "x", "0"))
     pass
 
-def calcola_polinomio_taylor(espressione: str, variabile: str, punto: float, ordine: int) -> sympy.Expr:
+
+def calcola_polinomio_taylor(espressione: str, variabile: str, punto: float, ordine: int
+) -> sympy.Expr:
     """Sub-task 4: Calcolare una Serie di Taylor."""
+
+    # Converte la variabile in simbolo SymPy
+    var = sympy.Symbol(variabile)
+
+    # Converte la stringa in espressione matematica SymPy
+    expr = sympy.sympify(espressione)
+
+    # Calcola la serie di Taylor
+    serie = sympy.series(expr, var, punto, ordine )
+
+    # Rimuove il termine O grande
+    polinomio = serie.removeO()
+
+    return polinomio
+
+
+def main():
+    # Esempio di utilizzo
+    print("Polinomio di Taylor:", calcola_polinomio_taylor("exp(x)", "x", 0.0, 4))
+
     pass
 
 def risolvi_sistema_lineare(eq1: str, eq2: str, var1: str, var2: str) -> Dict[sympy.Symbol, sympy.Expr]:
