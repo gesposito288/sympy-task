@@ -46,12 +46,32 @@ def calcola_integrale_definito(espressione: str, variabile: str, estremo_inf: fl
 
 def main():
     # Esempio di utilizzo
-    print("Integrale:", calcola_integrale_definito("x", "x", 0.0, 1.0))
+    print("Integrale:", calcola_integrale_definito("x", "x", 0.0, .0))
 
     pass
 
+
 def calcola_limite(espressione: str, variabile: str, punto: str) -> sympy.Expr:
     """Sub-task 3: Calcolare un Limite."""
+
+    # Converte la variabile in simbolo SymPy
+    var = sympy.Symbol(variabile)
+
+    # Converte il punto in espressione SymPy
+    punto_limite = sympy.sympify(punto)
+
+    # Converte la stringa in espressione matematica SymPy
+    expr = sympy.sympify(espressione)
+
+    # Calcola il limite
+    limite = sympy.limit(expr, var, punto_limite)
+
+    return limite
+
+
+def main():
+    # Esempio di utilizzo
+    print("Limite:", calcola_limite("sin(x)/x", "x", "0"))
     pass
 
 def calcola_polinomio_taylor(espressione: str, variabile: str, punto: float, ordine: int) -> sympy.Expr:
